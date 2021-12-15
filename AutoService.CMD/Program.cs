@@ -5,13 +5,17 @@ namespace AutoService.CMD
 {
     class Client
     {
-        private string _firstName;
+        private string _firstName; //Ты же сделал автоматическое
+                                   //свойство и нигде не используешь
+                                   //эти поля
 
         private string _lastName;
 
-        private int _date;
+        private int _date; //Странно описывать "клиента" датой (причем это дата заказа)
 
-        private Guid _id;
+        private Guid _id; //В целом возможно, но
+                          //думаю автосервису лучше будет 
+                          //идентифицировать по id именно заказы, а не клиентов
 
         public string firstName { get; set; }
 
@@ -41,7 +45,7 @@ namespace AutoService.CMD
 
                     Console.WriteLine("Нажмиете любую кновпку для выхода.");
 
-                    Environment.Exit(0);
+                    Environment.Exit(0); //Странное решение дропать прогу
 
                 }
 
@@ -49,7 +53,7 @@ namespace AutoService.CMD
 
         }
 
-        public virtual void StatusCar()
+        public virtual void StatusCar() //Не должен по идее относится к "клиенту"
         {
 
             Console.Write("Статус машины: Машина не работает!");
@@ -58,6 +62,8 @@ namespace AutoService.CMD
 
     }
 
+    //Получается что заказ ЯВЛЯЕТСЯ клиентом, что неправильно. Странно, что заказ наследуется от клиента
+    //Почти все методы статические, что по сути лишает смысла создавать объекты заказа.
     class Order : Client //пример наследования
     {
         public static void SetOrder(Client client)
@@ -89,6 +95,8 @@ namespace AutoService.CMD
 
         }
 
+        //Некоторые методы как этот не относится конкретно к заказу. 
+        //Заказ не выполняет диагностику
         public static void WhyCarIsBroken(Client client)
         {
             string confirm;
@@ -200,6 +208,9 @@ namespace AutoService.CMD
 
         }
 
+        //Метод называется "получить заказ", при этом он ничего не возращает
+        //В этом методе нет ничего связанного с заказом, все данные берутся из клиента
+        //Что в конечном итоге лишает смысла в объектах заказа как таковых
         public static void GetOrder(Client client)
         {
             Guid id = Guid.NewGuid();
