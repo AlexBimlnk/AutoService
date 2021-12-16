@@ -25,4 +25,10 @@ namespace AutoService.CMD
         /// </summary>
         Canceled
     }
+
+    public enum MechanismStatuses
+    {
+        Work,
+        Broken
+    }
 }

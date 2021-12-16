@@ -46,7 +46,8 @@ namespace AutoService.CMD
         /// </summary>
         public void ChangeStatusToProgress()
         {
-            OrderStatus = OrderStatuses.Progress;
+            if(OrderStatus == OrderStatuses.Wait)
+                OrderStatus = OrderStatuses.Progress;
         }
 
         /// <summary>
@@ -72,7 +73,8 @@ namespace AutoService.CMD
             return $"Id: {Id}\nStatus: {OrderStatus}\n" +
                    $"RequestDate: {RequestDate}\nFinishDate: {FinishDate}\n" +
                    $"Contact client\n\tName: {_client.Name}\n\tPhone: {_client.PhoneNumber}" +
-                   $"\n\tEMail: {_client.EMail}";
+                   $"\n\tEMail: {_client.EMail}\n" +
+                   $"Car state:\n{Client.Car.GetInfo()}";
         }
     }
 }
