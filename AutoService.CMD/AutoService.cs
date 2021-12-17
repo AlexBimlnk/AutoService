@@ -73,8 +73,8 @@ namespace AutoService.CMD
 
                     if(order != null)
                     {
-                        _employeesTasks.Add(emp, GiveOrder());
-                        _employeesTasks[emp].ChangeStatusToProgress();
+                        order.ChangeStatusToProgress();
+                        _employeesTasks.Add(emp, order);
                     }
                 }
                 else
