@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoService.UI.CarBL
 {
-    public class Engine
+    public class Engine : IMechanism
     {
         /// <summary>
         /// Лошадиные силы.

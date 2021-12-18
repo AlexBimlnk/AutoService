@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoService.UI.CarBL
 {
-    public class Wheels
+    public class Wheels : IMechanism
     {
         //Предпололжим что здесь мы описали необходимые свойства и методы колёс
 

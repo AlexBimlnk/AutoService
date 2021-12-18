@@ -51,9 +51,11 @@ namespace AutoService.UI
                 else
                 {
                     Car car = _employeesTasks[emp].Client.Car;
-                    car.Engine.Status = MechanismStatuses.Work;
-                    car.Transmission.Status = MechanismStatuses.Work;
-                    car.Wheels.Status = MechanismStatuses.Work;
+
+                    foreach(var mechanism in car.GetComponents())
+                    {
+                        mechanism.Status = MechanismStatuses.Work;
+                    }
 
                     _employeesTasks[emp].Close();
                     _employeesTasks.Remove(emp);

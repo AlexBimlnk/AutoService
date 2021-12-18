@@ -26,6 +26,11 @@ namespace AutoService.UI.CarBL
             Model = model;
         }
 
+        public List<IMechanism> GetComponents()
+        {
+            return new List<IMechanism>() { Engine, Wheels, Transmission };
+        }
+
         public string GetInfo()
         {
             return  $"Firm: {Firm}\n" +

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoService.UI.CarBL
 {
-    public class Transmission
+    public class Transmission : IMechanism
     {
         //Предпололжим что здесь мы описали необходимые свойства и методы
         //описывающие трансмиссию (ходовую часть)
