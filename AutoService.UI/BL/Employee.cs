@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoService.UI
 {
-    public class Employee : Person //Пример наследования
+    public class Employee : Person, IGetInformation //Пример наследования
     {
         public string Qualification { get; set; }
         public int Salary { get; set; }

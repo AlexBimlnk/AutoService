@@ -79,19 +79,13 @@ namespace AutoService.UI
         {
             if(treeView.SelectedNode != null && treeView.SelectedNode.Tag != null)
             {
+                //Больше не нужно определять является ли этот объект сотрудником или заказом
+                //Нам это и не важно, нам важно получить информацию, а значит объект, из которого
+                //мы будем пытаться её извлечь обязан реализовывать метод определенный интерфейсом.
                 TreeNode node = treeView.SelectedNode;
-                object bindObj = node.Tag;
+                IGetInformation bindObj = node.Tag as IGetInformation;
 
-                if(bindObj is Employee)
-                {
-                    Employee emp = bindObj as Employee;
-                    informationTextBox.Text = emp.GetInfo();
-                }
-                else
-                {
-                    Order order = bindObj as Order;
-                    informationTextBox.Text = order.GetInfo();
-                }
+                informationTextBox.Text = bindObj.GetInfo();
             }
         }
 

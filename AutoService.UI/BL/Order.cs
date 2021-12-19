@@ -9,7 +9,7 @@ namespace AutoService.UI
     /// <summary>
     /// Заказ.
     /// </summary>
-    public class Order
+    public class Order : IGetInformation
     {
         //Чтобы установить значение один раз, при создании экземпляра в конструторе
         //Это гарантирует что клиент у заказа не изменится
