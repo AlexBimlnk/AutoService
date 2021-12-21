@@ -47,22 +47,23 @@ namespace AutoService.UI
             string firm = firmTextBox.Text;
             string model = modelTextBox.Text;
 
-            bool engineIsWork = false;
-            bool transmissionIsWork = false;
-            bool wheelsIsWork = false;
-
-            if(yesRBtn.Checked == true)
+            if (yesRBtn.Checked == true)
             {
-                engineIsWork = !engineCheckBox.Checked;
-                transmissionIsWork = !transmissionCheckBox.Checked;
-                wheelsIsWork = !wheelsCheckBox.Checked;
+                bool engineIsWork = !engineCheckBox.Checked;
+                bool transmissionIsWork = !transmissionCheckBox.Checked;
+                bool wheelsIsWork = !wheelsCheckBox.Checked;
+
+                order = new Order(new Client(name, lastName, phone, email,
+                              new Car(new Engine(GetMechanismStatus(engineIsWork)),
+                              new Wheels(GetMechanismStatus(wheelsIsWork)),
+                              new Transmission(GetMechanismStatus(transmissionIsWork)),
+                              firm, model)));
             }
 
-            order = new Order(new Client(name, lastName, phone, email,
-                              new Car(new Engine(GetMechanismStatus(engineIsWork)), 
-                              new Wheels(GetMechanismStatus(wheelsIsWork)),
-                              new Transmission(GetMechanismStatus(transmissionIsWork)), 
-                              firm, model)));
+            else
+                order = new Order(new Client(name, lastName, phone, email,
+                                  CarGenerator.CreateBrokenCar(firm, model)));
+            
         }
 
         private MechanismStatuses GetMechanismStatus(bool flag)

@@ -12,9 +12,15 @@ namespace AutoService.UI.CarBL
 
         public string Model { get; private set; }
 
-        public Engine Engine { get; private set; }
-        public Wheels Wheels { get; private set; }
-        public Transmission Transmission { get; private set; }
+        public Engine Engine { get; set; }
+        public Wheels Wheels { get; set; }
+        public Transmission Transmission { get; set; }
+
+        public Car(string firmName, string model)
+        {
+            Firm = firmName;
+            Model = model;
+        }
 
         public Car(Engine engine, Wheels wheels, Transmission transmission, 
                    string firmName, string model)

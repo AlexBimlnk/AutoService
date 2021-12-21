@@ -13,6 +13,16 @@ namespace AutoService.CMD
         private static List<Order> _orders = new List<Order>();
         private static Dictionary<Employee, Order> _employeesTasks = new Dictionary<Employee, Order>();
 
+        //Еще один пример использование делегата
+        //В качестве ключа используем делегат который не имеет параметров и не возвращает значений
+        //public delegate void Action();
+        private static Dictionary<string, Action> _commands = new Dictionary<string, Action>()
+        {
+            //Связываем название команды с конкретным методом
+            { "1", CreateOrder  },
+            { "3", CanceledOrder }
+        };
+
         public static void StartWork()
         {
             bool isWorked = true;
@@ -22,32 +32,21 @@ namespace AutoService.CMD
                 PrintService();
                 string inputService = Console.ReadLine();
 
-                switch (inputService)
-                {
-                    case "1":
-                        Console.WriteLine();
-                        CreateOrder();
-                        Console.WriteLine();
-                        break;
-                    case "2":
-                        Console.WriteLine();
-                        Console.WriteLine(GetInfoAboutOrder(FindOrder()));
-                        Console.WriteLine();
-                        break;
-                    case "3":
-                        Console.WriteLine();
-                        CanceledOrder();
-                        Console.WriteLine();
-                        break;
-                    case "4":
-                        isWorked = false;
-                        break;
-                    default:
-                        Console.WriteLine();
-                        Console.WriteLine("Команда не распознана.");
-                        Console.WriteLine();
-                        break;
-                }
+                Console.WriteLine();
+
+                if (_commands.ContainsKey(inputService))
+                    _commands[inputService](); //Вызываем привязанную команду
+
+                else if (inputService == "2")
+                    Console.WriteLine(GetInfoAboutOrder(FindOrder()));
+
+                else if (inputService == "4")
+                    isWorked = false;
+
+                else
+                    Console.WriteLine("Команда не распознана.");
+
+                Console.WriteLine();
 
                 TryTakeOrder();
 
