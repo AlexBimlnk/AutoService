@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace AutoService.UI.CarBL
 {
-    public delegate void CreateBrokenCarHandler(Car car);
+    public delegate void BrokenCarHandler(Car car);
     public class CarGenerator
     {
-        private static CreateBrokenCarHandler createBrokenCar;
+        public static BrokenCarHandler breakTheCar;
 
         static CarGenerator()
         {
-            createBrokenCar += CreateBrokenEngine;
-            createBrokenCar += CreateBrokenTransmission;
-            createBrokenCar += CreateBrokenWheels;
+            breakTheCar += CreateBrokenEngine;
+            breakTheCar += CreateBrokenTransmission;
+            breakTheCar += CreateBrokenWheels;
         }
 
-        public static Car CreateBrokenCar(string firmName, string model)
+        public static Car GetBrokenCar(string firmName, string model)
         {
             Car car = new Car(firmName, model);
 
-            createBrokenCar(car);
+            breakTheCar(car);
 
             return car;
         }

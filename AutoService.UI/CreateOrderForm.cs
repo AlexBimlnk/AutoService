@@ -62,8 +62,8 @@ namespace AutoService.UI
 
             else
                 order = new Order(new Client(name, lastName, phone, email,
-                                  CarGenerator.CreateBrokenCar(firm, model)));
-            
+                                  CarGenerator.GetBrokenCar(firm, model)));
+
         }
 
         private MechanismStatuses GetMechanismStatus(bool flag)
