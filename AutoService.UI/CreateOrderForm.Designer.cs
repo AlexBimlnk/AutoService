@@ -47,8 +47,8 @@ namespace AutoService.UI
             this.wheelsCheckBox = new System.Windows.Forms.CheckBox();
             this.modelTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.firmTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -237,14 +237,6 @@ namespace AutoService.UI
             this.label5.TabIndex = 16;
             this.label5.Text = "Введите модель машины:";
             // 
-            // firmTextBox
-            // 
-            this.firmTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.firmTextBox.Location = new System.Drawing.Point(604, 197);
-            this.firmTextBox.Name = "firmTextBox";
-            this.firmTextBox.Size = new System.Drawing.Size(184, 33);
-            this.firmTextBox.TabIndex = 15;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -255,14 +247,24 @@ namespace AutoService.UI
             this.label6.TabIndex = 14;
             this.label6.Text = "Введите фирму машины:";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(604, 197);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(184, 33);
+            this.comboBox1.TabIndex = 18;
+            // 
             // CreateOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.modelTextBox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.firmTextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -306,7 +308,7 @@ namespace AutoService.UI
         private System.Windows.Forms.CheckBox transmissionCheckBox;
         private System.Windows.Forms.TextBox modelTextBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox firmTextBox;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

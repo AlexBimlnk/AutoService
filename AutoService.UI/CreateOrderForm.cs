@@ -14,10 +14,16 @@ namespace AutoService.UI
     public partial class CreateOrderForm : Form
     {
         private Order order = null;
+        private List<CarFirms> carFirms = new List<CarFirms>()
+        {
+            CarFirms.Fiat, CarFirms.Toyota, CarFirms.Mazda, CarFirms.Lexus, CarFirms.Suzuki
+        };
 
         public CreateOrderForm()
         {
             InitializeComponent();
+
+            comboBox1.DataSource = carFirms;
         }
 
         public Order GetOrder()
@@ -44,25 +50,25 @@ namespace AutoService.UI
             string phone = phoneTextBox.Text;
             string email = emailTextBox.Text;
 
-            string firm = firmTextBox.Text;
+            string firm = comboBox1.SelectedItem.ToString();
             string model = modelTextBox.Text;
+
+            bool engineIsWork = false;
+            bool transmissionIsWork = false;
+            bool wheelsIsWork = false;
 
             if (yesRBtn.Checked == true)
             {
-                bool engineIsWork = !engineCheckBox.Checked;
-                bool transmissionIsWork = !transmissionCheckBox.Checked;
-                bool wheelsIsWork = !wheelsCheckBox.Checked;
+                engineIsWork = !engineCheckBox.Checked;
+                transmissionIsWork = !transmissionCheckBox.Checked;
+                wheelsIsWork = !wheelsCheckBox.Checked;
+            }
 
-                order = new Order(new Client(name, lastName, phone, email,
+            order = new Order(new Client(name, lastName, phone, email,
                               new Car(new Engine(GetMechanismStatus(engineIsWork)),
                               new Wheels(GetMechanismStatus(wheelsIsWork)),
                               new Transmission(GetMechanismStatus(transmissionIsWork)),
                               firm, model)));
-            }
-
-            else
-                order = new Order(new Client(name, lastName, phone, email,
-                                  CarGenerator.GetBrokenCar(firm, model)));
 
         }
 

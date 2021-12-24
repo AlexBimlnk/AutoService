@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 namespace AutoService.UI
 {
+    public enum CarFirms
+    {
+        Fiat,
+        Toyota,
+        Mazda,
+        Lexus,
+        Suzuki
+    }
+
+
     public enum OrderStatuses
     {
         /// <summary>

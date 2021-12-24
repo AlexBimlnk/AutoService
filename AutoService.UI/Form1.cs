@@ -52,10 +52,7 @@ namespace AutoService.UI
                 {
                     Car car = _employeesTasks[emp].Client.Car;
 
-                    foreach(var mechanism in car.GetComponents())
-                    {
-                        mechanism.Status = MechanismStatuses.Work;
-                    }
+                    CarFactory.ReplaceCar(car, ChangeMechanismStatus);
 
                     _employeesTasks[emp].Close();
                     _employeesTasks.Remove(emp);
@@ -74,6 +71,13 @@ namespace AutoService.UI
             return null;
         }
 
+        private static void ChangeMechanismStatus(Car car)
+        {
+            foreach (var mechanism in car.GetComponents())
+            {
+                mechanism.Status = MechanismStatuses.Work;
+            }
+        }
 
         private void getInfoBtn_Click(object sender, EventArgs e)
         {
