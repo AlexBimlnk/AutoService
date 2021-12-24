@@ -57,7 +57,7 @@ namespace AutoService.UI
             bool transmissionIsWork = false;
             bool wheelsIsWork = false;
 
-            if (yesRBtn.Checked == true)
+            if (yesRBtn.Checked)
             {
                 engineIsWork = !engineCheckBox.Checked;
                 transmissionIsWork = !transmissionCheckBox.Checked;
@@ -70,6 +70,8 @@ namespace AutoService.UI
                               new Transmission(GetMechanismStatus(transmissionIsWork)),
                               firm, model)));
 
+            if (yesSendRbtn.Checked)
+                order.Finished += SendMessageToClient;
         }
 
         private MechanismStatuses GetMechanismStatus(bool flag)
@@ -78,6 +80,16 @@ namespace AutoService.UI
                 return MechanismStatuses.Work;
             else
                 return MechanismStatuses.Broken;
+        }
+
+        private void SendMessageToClient(object sender, EventArgs e)
+        {
+            Order temp = sender as Order;
+
+            //Здесь например логика отправки сообщения на электронную почту
+
+            MessageBox.Show($"На почту {temp.Client.EMail} отправлено сообщение.", "Внимание!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

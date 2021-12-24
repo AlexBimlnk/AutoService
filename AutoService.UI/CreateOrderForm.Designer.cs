@@ -49,8 +49,12 @@ namespace AutoService.UI
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.noSendRbtn = new System.Windows.Forms.RadioButton();
+            this.yesSendRbtn = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -257,11 +261,46 @@ namespace AutoService.UI
             this.comboBox1.Size = new System.Drawing.Size(184, 33);
             this.comboBox1.TabIndex = 18;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.noSendRbtn);
+            this.groupBox3.Controls.Add(this.yesSendRbtn);
+            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox3.Location = new System.Drawing.Point(489, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(306, 108);
+            this.groupBox3.TabIndex = 19;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Оповестить вас по окончанию работы?";
+            // 
+            // noSendRbtn
+            // 
+            this.noSendRbtn.AutoSize = true;
+            this.noSendRbtn.Checked = true;
+            this.noSendRbtn.Location = new System.Drawing.Point(191, 59);
+            this.noSendRbtn.Name = "noSendRbtn";
+            this.noSendRbtn.Size = new System.Drawing.Size(61, 29);
+            this.noSendRbtn.TabIndex = 1;
+            this.noSendRbtn.TabStop = true;
+            this.noSendRbtn.Text = "Нет";
+            this.noSendRbtn.UseVisualStyleBackColor = true;
+            // 
+            // yesSendRbtn
+            // 
+            this.yesSendRbtn.AutoSize = true;
+            this.yesSendRbtn.Location = new System.Drawing.Point(28, 59);
+            this.yesSendRbtn.Name = "yesSendRbtn";
+            this.yesSendRbtn.Size = new System.Drawing.Size(53, 29);
+            this.yesSendRbtn.TabIndex = 0;
+            this.yesSendRbtn.Text = "Да";
+            this.yesSendRbtn.UseVisualStyleBackColor = true;
+            // 
             // CreateOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.modelTextBox);
             this.Controls.Add(this.label5);
@@ -283,6 +322,8 @@ namespace AutoService.UI
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,5 +351,8 @@ namespace AutoService.UI
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton noSendRbtn;
+        private System.Windows.Forms.RadioButton yesSendRbtn;
     }
 }
