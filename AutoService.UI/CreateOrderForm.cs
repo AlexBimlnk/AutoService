@@ -14,14 +14,17 @@ namespace AutoService.UI
     public partial class CreateOrderForm : Form
     {
         private Order order = null;
-        private List<CarFirms> carFirms = new List<CarFirms>()
-        {
-            CarFirms.Fiat, CarFirms.Toyota, CarFirms.Mazda, CarFirms.Lexus, CarFirms.Suzuki
-        };
+        private List<CarFirms> carFirms = new List<CarFirms>();
 
         public CreateOrderForm()
         {
             InitializeComponent();
+
+            //Заполняем список фирм
+            foreach (CarFirms firm in Enum.GetValues(typeof(CarFirms)))
+            {
+                carFirms.Add(firm);
+            }
 
             comboBox1.DataSource = carFirms;
         }
