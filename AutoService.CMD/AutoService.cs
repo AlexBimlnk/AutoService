@@ -12,6 +12,7 @@ namespace AutoService.CMD
         private static List<Employee> _employees = new List<Employee>();
         private static List<Order> _orders = new List<Order>();
         private static Dictionary<Employee, Order> _employeesTasks = new Dictionary<Employee, Order>();
+        private static bool _isWorked = true;
 
         //Еще один пример использование делегата
         //В качестве ключа используем делегат который не имеет параметров и не возвращает значений
@@ -20,12 +21,13 @@ namespace AutoService.CMD
         {
             //Связываем название команды с конкретным методом
             { "1", CreateOrder  },
-            { "3", CanceledOrder }
+            { "2", () => Console.WriteLine(GetInfoAboutOrder(FindOrder())) },
+            { "3", CanceledOrder },
+            { "4", () => _isWorked = false }
         };
 
         public static void StartWork()
         {
-            bool isWorked = true;
             do
             {
                 Console.WriteLine("Выберите предоставляемую услугу: ");
@@ -37,12 +39,6 @@ namespace AutoService.CMD
                 if (_commands.ContainsKey(inputService))
                     _commands[inputService](); //Вызываем привязанную команду
 
-                else if (inputService == "2")
-                    Console.WriteLine(GetInfoAboutOrder(FindOrder()));
-
-                else if (inputService == "4")
-                    isWorked = false;
-
                 else
                     Console.WriteLine("Команда не распознана.");
 
@@ -50,7 +46,7 @@ namespace AutoService.CMD
 
                 TryTakeOrder();
 
-            } while (isWorked);
+            } while (_isWorked);
         }
 
         /// <summary>

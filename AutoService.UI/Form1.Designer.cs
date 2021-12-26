@@ -29,13 +29,14 @@ namespace AutoService.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Orders");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Employees");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Orders");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Employees");
             this.informationTextBox = new System.Windows.Forms.RichTextBox();
             this.treeView = new System.Windows.Forms.TreeView();
             this.getInfoBtn = new System.Windows.Forms.Button();
             this.createOrderBtn = new System.Windows.Forms.Button();
             this.cancelOrderBtn = new System.Windows.Forms.Button();
+            this.analysisBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // informationTextBox
@@ -53,13 +54,13 @@ namespace AutoService.UI
             this.treeView.Cursor = System.Windows.Forms.Cursors.Default;
             this.treeView.Location = new System.Drawing.Point(12, 12);
             this.treeView.Name = "treeView";
-            treeNode3.Name = "Orders";
-            treeNode3.Text = "Orders";
-            treeNode4.Name = "Employees";
-            treeNode4.Text = "Employees";
+            treeNode5.Name = "Orders";
+            treeNode5.Text = "Orders";
+            treeNode6.Name = "Employees";
+            treeNode6.Text = "Employees";
             this.treeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
+            treeNode5,
+            treeNode6});
             this.treeView.Size = new System.Drawing.Size(130, 426);
             this.treeView.TabIndex = 1;
             // 
@@ -96,11 +97,23 @@ namespace AutoService.UI
             this.cancelOrderBtn.UseVisualStyleBackColor = false;
             this.cancelOrderBtn.Click += new System.EventHandler(this.cancelOrderBtn_Click);
             // 
+            // analysisBtn
+            // 
+            this.analysisBtn.BackColor = System.Drawing.Color.Bisque;
+            this.analysisBtn.Location = new System.Drawing.Point(148, 147);
+            this.analysisBtn.Name = "analysisBtn";
+            this.analysisBtn.Size = new System.Drawing.Size(119, 39);
+            this.analysisBtn.TabIndex = 5;
+            this.analysisBtn.Text = "Провести анализ";
+            this.analysisBtn.UseVisualStyleBackColor = false;
+            this.analysisBtn.Click += new System.EventHandler(this.analysisBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.analysisBtn);
             this.Controls.Add(this.cancelOrderBtn);
             this.Controls.Add(this.createOrderBtn);
             this.Controls.Add(this.getInfoBtn);
@@ -120,6 +133,7 @@ namespace AutoService.UI
         private System.Windows.Forms.Button getInfoBtn;
         private System.Windows.Forms.Button createOrderBtn;
         private System.Windows.Forms.Button cancelOrderBtn;
+        private System.Windows.Forms.Button analysisBtn;
     }
 }
 

@@ -124,5 +124,31 @@ namespace AutoService.UI
                 }
             }
         }
+
+        private void analysisBtn_Click(object sender, EventArgs e)
+        {
+            int countWaitOrders = _orders.Where(order => order.OrderStatus == OrderStatuses.Wait)
+                                         .Count();
+
+            int countProgressOrders = _orders.Where(order => order.OrderStatus == OrderStatuses.Progress)
+                                             .Count();
+
+            int freeEmployees = _employees.Where(emp => !_employeesTasks.Keys.Contains(emp))
+                                          .Count();
+
+            int timeNeed = countWaitOrders * 2 / _employees.Count;
+
+            var averageTimeDone = _orders.Where(order => order.OrderStatus == OrderStatuses.Finished)
+                                         .Select(order => order.FinishDate - order.RequestDate)
+                                         .Average(dateTime => dateTime.TotalSeconds);
+                                         
+
+            informationTextBox.Text = $"Заказов ожидающих выполнения: {countWaitOrders}\n" +
+                                      $"Заказов в процессе выполнения: {countProgressOrders}\n" +
+                                      $"Кол-во сотрудников: {_employees.Count}\n" +
+                                      $"Кол-во свободных сотрудников: {freeEmployees}\n" +
+                                      $"Примерное время ожидания: {timeNeed}\n" +
+                                      $"Среднее выполнение заказа: {averageTimeDone} секунд";
+        }
     }
 }
