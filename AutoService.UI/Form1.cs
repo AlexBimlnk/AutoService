@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AutoService.UI.CarBL;
@@ -16,11 +18,21 @@ namespace AutoService.UI
         private static List<Employee> _employees = new List<Employee>();
         private static List<Order> _orders = new List<Order>();
         private static Dictionary<Employee, Order> _employeesTasks = new Dictionary<Employee, Order>();
+        private static Thread workerEmployeesThread;
 
         public Form1()
         {
             InitializeComponent();
+
             RecruiteEmployee(new Employee("Mike", "Wazovski"));
+
+            workerEmployeesThread = new Thread(() =>
+            {
+                while (true)
+                    TryTakeOrder();
+            });
+            workerEmployeesThread.IsBackground = true;
+            workerEmployeesThread.Start();
         }
 
         /// <summary>
@@ -36,6 +48,7 @@ namespace AutoService.UI
 
         public void TryTakeOrder()
         {
+            Thread.Sleep(6000); //6sec
             foreach (var emp in _employees)
             {
                 if (!_employeesTasks.ContainsKey(emp))
@@ -58,6 +71,7 @@ namespace AutoService.UI
                     _employeesTasks.Remove(emp);
                 }
             }
+            Debug.WriteLine("TryTakeOrder done.");
         }
 
         private Order GiveOrder()
@@ -104,8 +118,6 @@ namespace AutoService.UI
                 TreeNode ordersNode = treeView.Nodes[0];
                 ordersNode.Nodes.Add(new TreeNode() { Text = order.Id.ToString(), Tag = order });
                 informationTextBox.Text = order.GetInfo();
-
-                TryTakeOrder();
             }
         }
 
